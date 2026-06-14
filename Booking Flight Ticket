@@ -1,0 +1,41 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assenment {
+    public static void main(String[] args) {
+
+        try {
+            WebDriver driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.get("https://www.agoda.com/");
+            Thread.sleep(1000);
+
+           driver.findElement(By.xpath("//li[@id='tab-flight-tab']")).click();
+           Thread.sleep(1000);
+
+           driver.findElement(By.xpath("(//div[@class='Box-sc-kv6pi1-0 krcUda IconBox__wrapper'])[3]")).click();
+           Thread.sleep(1000);
+
+           for (;;){
+
+            String monthname =  driver.findElement(By.xpath("(//div[@class='DayPicker-Caption DayPicker-Caption-Wide'])[1]")).getText();
+            if(monthname.equals("September 2026")){
+                driver.findElement(By.xpath("(//div[@class='DayPicker-Caption DayPicker-Caption-Wide'])[1]/..//span[text()=16]")).click();
+                break;
+            }
+            else {
+                Thread.sleep(1000);
+                System.out.print("monthname");
+                driver.findElement(By.xpath("//button[@aria-label='Next Month']")).click();
+                Thread.sleep(1000);
+            }
+           }
+            driver.findElement(By.xpath("(//button[@data-element-name='flight-cabin-class'])[3]")).click();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+}
