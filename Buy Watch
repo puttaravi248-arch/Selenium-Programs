@@ -1,0 +1,32 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ContainsTask {
+    public static void main(String[] args) {
+        try {
+            WebDriver driver = new ChromeDriver();
+            driver.get("https://www.snapdeal.com/");
+            Thread.sleep(1000);
+
+            driver.findElement(By.xpath("//input[@id=\"search-box-input\"]")).sendKeys("watches");
+            Thread.sleep(1000);
+
+            driver.findElement(By.xpath("(//div[@class=\"HeaderStyle__AutoSuggestionsEle-sc-dc90d7cb-13 loWdqC\"])[1]")).click();
+            Thread.sleep(1000);
+
+            driver.findElement(By.xpath("//label[@for='discount-40 - 50']")).click();
+            Thread.sleep(1000);
+
+            driver.findElement(By.xpath("//p[@title=\"ZETWAL Silver Fabric Analog Men's Watch\"]")).click();
+            Thread.sleep(1000);
+
+            driver.findElement(By.xpath("//div[@data-state='Buy Now']")).click();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
